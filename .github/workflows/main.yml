@@ -1,0 +1,46 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Adjust the branch name if needed
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js 
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.16.0  # Adjust the version if needed
+
+      - name: Install dependencies (for server)
+        run: |
+          cd server
+          yarn install
+          MONGODB_URI=$MONGODB_URI
+          JWT_SECRET=$JWT_SECRET
+          yarn global add nodemon
+          yarn run dev
+          cd ..
+
+      - name: Install dependencies (for client)
+        run: |
+          cd client
+          npm install
+          npm start
+        
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.6
+        with:
+          branch: gh-pages  # Deploy to the gh-pages branch
+          folder: client/build  # Folder containing the built client
+          cleanup: false  # Keep existing files on gh-pages branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
