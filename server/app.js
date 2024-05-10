@@ -17,6 +17,11 @@ app.use(require("cors")());
 app.use("/api", require("./routes/auth"));
 app.use("/api", require("./routes/contact"));
 
+app.get("/", (req, res) => {
+    console.log("Server is running");
+    res.send("Server is running"); // Optionally, you can send a response to the client
+});
+
 // server configurations.
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
