@@ -18,23 +18,19 @@ jobs:
         with:
           node-version: 18.16.0  # Adjust the version if needed
 
-      - name: Install dependencies
-        run: npm install  # Assuming the client uses npm
+      - name: Install dependencies (for server)
+        run: |
+          cd server
+          yarn install
+          yarn run dev
+          cd ..
 
-      - name: Build client
-        run: npm run build  # Adjust the build script if needed
-
-      - name: Install Node.js 
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16.0, 18.0  # Adjust the version if needed
-
-      - name: Install dependencies
-        run: yarn install  # Assuming the server uses Yarn
-
-      - name: Build server
-        run: yarn run dev  # Adjust if your server needs to be built
-
+      - name: Install dependencies (for client)
+        run: |
+          cd client
+          npm install
+          npm start
+        
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.6
         with:
