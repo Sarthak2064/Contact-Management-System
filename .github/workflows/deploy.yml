@@ -22,6 +22,8 @@ jobs:
         run: |
           cd server
           yarn install
+          MONGODB_URI=$MONGODB_URI
+          JWT_SECRET=$JWT_SECRET
           yarn global add nodemon
           yarn run dev
           cd ..
@@ -40,8 +42,5 @@ jobs:
           cleanup: false  # Keep existing files on gh-pages branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Set up environment variables
-        run: |
-          echo "JWT_SECRET=$JWT_SECRET" >> $GITHUB_ENV
-          echo "MONGODB_URI=$MONGODB_URI" >> $GITHUB_ENV
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
