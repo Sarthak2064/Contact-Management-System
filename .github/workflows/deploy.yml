@@ -36,7 +36,7 @@ jobs:
         run: yarn run dev  # Adjust if your server needs to be built
 
       - name: Deploy to GitHub Pages
-        uses: Sarthak2064/github-pages-deploy-action@4.1.6
+        uses: JamesIves/github-pages-deploy-action@4.1.6
         with:
           branch: gh-pages  # Deploy to the gh-pages branch
           folder: client/build  # Folder containing the built client
