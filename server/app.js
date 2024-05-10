@@ -11,12 +11,7 @@ const app = express();
 // middlewares
 app.use(express.json());
 app.use(morgan("tiny"));
-app.use(require("cors")({
-    origin: ["https://contact-management-system-7enupkiv5.vercel.app"].
-    method: ["POST", "GET"],
-    credentials: true
-}
-));
+app.use(require("cors")());
 
 // routes
 app.use("/api", require("./routes/auth"));
