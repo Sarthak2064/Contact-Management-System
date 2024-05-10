@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(require("cors")({
-    origin: ["https://contact-management-system-7enupkiv5-sarthak2064s-projects.vercel.app"].
+    origin: ["https://contact-management-system-7enupkiv5.vercel.app"].
     method: ["POST", "GET"],
     credentials: true
 }
