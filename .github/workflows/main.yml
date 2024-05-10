@@ -25,7 +25,7 @@ jobs:
           $env:MONGODB_URI = $env:MONGODB_URI
           $env:JWT_SECRET=$env:JWT_SECRET
           yarn global add nodemon
-          yarn run dev
+          yarn run dev &
           cd ..
 
       - name: Install dependencies (for client)
