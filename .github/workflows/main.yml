@@ -23,7 +23,7 @@ jobs:
           cd server
           yarn install
           $env:MONGODB_URI = $env:MONGODB_URI
-          export JWT_SECRET=$JWT_SECRET
+          $env:JWT_SECRET=$env:JWT_SECRET
           yarn global add nodemon
           yarn run dev
           cd ..
