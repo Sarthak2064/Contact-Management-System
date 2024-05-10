@@ -28,7 +28,7 @@ const EditContact = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const res = await fetch(`http://localhost:8000/api/contact`, {
+    const res = await fetch(`https://contact-management-system-iqck.onrender.com/api/contact`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ const EditContact = () => {
   useEffect(async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:8000/api/contact/${id}`, {
+      const res = await fetch(`https://contact-management-system-iqck.onrender.com/api/contact/${id}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -134,7 +134,7 @@ const EditContact = () => {
                 name="phone"
                 value={userDetails.phone}
                 onChange={handleInputChange}
-                placeholder="+977 987654321"
+                placeholder="987654321"
                 required
               />
             </div>
