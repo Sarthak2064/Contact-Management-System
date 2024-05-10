@@ -16,7 +16,7 @@ jobs:
       - name: Install Node.js 
         uses: actions/setup-node@v2
         with:
-          node-version: 14  # Adjust the version if needed
+          node-version: 16.0, 18.0  # Adjust the version if needed
 
       - name: Install dependencies
         run: npm install  # Assuming the client uses npm
@@ -27,16 +27,16 @@ jobs:
       - name: Install Node.js 
         uses: actions/setup-node@v2
         with:
-          node-version: 14  # Adjust the version if needed
+          node-version: 16.0, 18.0  # Adjust the version if needed
 
       - name: Install dependencies
         run: yarn install  # Assuming the server uses Yarn
 
       - name: Build server
-        run: yarn build  # Adjust if your server needs to be built
+        run: yarn run dev  # Adjust if your server needs to be built
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.6
+        uses: Sarthak2064/github-pages-deploy-action@4.1.6
         with:
           branch: gh-pages  # Deploy to the gh-pages branch
           folder: client/build  # Folder containing the built client
