@@ -11,10 +11,11 @@ const app = express();
 // middlewares
 app.use(express.json());
 app.use(morgan("tiny"));
-app.use(require("cors")(
+app.use(require("cors")({
     origin: ["https://delpoy-mern-1whq.vercel.app"].
     method: ["POST", "GET"],
     credentials: true
+}
 ));
 
 // routes
